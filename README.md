@@ -33,7 +33,7 @@ sudo ./02-setup-k8s.sh
 
 2. Test GPU-Operator Installation
 
-* Smoke test of containerized NVIDIA Driver/Runtime with `nvidia-smi`
+Smoke test of containerized NVIDIA Driver/Runtime with `nvidia-smi`:
 
 ```bash
 sudo docker run --runtime=nvidia -it nvidia/cuda nvidia-smi
@@ -57,11 +57,18 @@ sudo docker run --runtime=nvidia -it nvidia/cuda nvidia-smi
 
 ```
 
-* Or run a sample TensorFlow Jupyter Notebook
-    * Make sure to open up the necessary ports on your AWS Instance to access the notebook (443 / 8888), see this blog for details: https://chrisalbon.com/aws/basics/run_project_jupyter_on_amazon_ec2/
+Or run a sample TensorFlow Jupyter Notebook:
 
 ```bash
 # This may take at least 3 minutes to start up
 ./05-sample-tf-notebook.sh
 ```
 
+## Notes
+
+Some things to look out for when configuring an AWS Instance:
+
+1. Make sure any necessary ports are exposed. The demo tf-notebook will be launched on port 30001 by default, so make
+sure to configure a Security Group to open that port: https://chrisalbon.com/aws/basics/run_project_jupyter_on_amazon_ec2/
+
+2. The Docker container images used by the GPU Operator as well as any applications may take up significant space, so be sure to increase the default storage application from 8GB. I generally go with 100GB to be safe.
