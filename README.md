@@ -1,8 +1,6 @@
 # GPU-Operator Setup
 
-## Ubuntu 18.04
-
-This was tested with the following configuration:
+This was tested with the following configurations:
 
 **Server**:
 * AWS p3.2xlarge instance (1xV100 GPU)
@@ -14,7 +12,10 @@ This was tested with the following configuration:
 * Kubernetes 1.15.6
 * Helm 2.15.2
 
-1. Install GPU-Operator and it's dependencies
+## GPU-Operator Setup
+
+Install GPU-Operator and it's dependencies:
+
 ```bash
 cd setup/
 
@@ -31,7 +32,7 @@ sudo ./02-setup-k8s.sh
 ./04-setup-gpu-operator.sh
 ```
 
-2. Test GPU-Operator Installation
+## Test GPU-Operator Installation
 
 Smoke test of containerized NVIDIA Driver/Runtime with `nvidia-smi`:
 
