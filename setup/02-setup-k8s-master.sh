@@ -12,7 +12,7 @@ if [[ "$(id -u)" -ne 0 ]]; then
 fi
 
 # Install k8s pre-requisits
-apt-get update && apt-get install -y apt-transport-https
+apt-get update -y && apt-get install -y apt-transport-https
 
 # Add k8s deb repo
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -25,7 +25,7 @@ EOF
 chmod 644 /etc/apt/sources.list.d/kubernetes.list
 
 # Install k8s components
-apt-get update
+apt-get update  -y
 apt-get install -y --allow-change-held-packages kubelet="${K8S_VERSION}" kubeadm="${K8S_VERSION}" kubectl="${K8S_VERSION}"
 apt-mark hold kubelet kubeadm kubectl
 

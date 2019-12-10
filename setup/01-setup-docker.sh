@@ -9,8 +9,8 @@ if [[ "$(id -u)" -ne 0 ]]; then
 fi
 
 # Install prerequisite system packages
-apt-get update && \
-apt-get install \
+apt-get update  -y && \
+apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -28,8 +28,8 @@ add-apt-repository \
    stable"
 
 # Install docker components
-apt-get update && \
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-get update  -y && \
+apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Add user to group to avoid need for sudo after reboot
 usermod -aG docker $USER
